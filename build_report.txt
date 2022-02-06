@@ -25,7 +25,7 @@ Bank 19 has 00982 bytes (5.99%) free.
 Bank 20 has 00928 bytes (5.66%) free.
 Bank 21 has 00102 bytes (0.62%) free.
 Bank 22 has 01792 bytes (10.94%) free.
-Bank 23 has 01274 bytes (7.78%) free.
+Bank 23 has 01564 bytes (9.55%) free.
 Bank 24 has 03124 bytes (19.07%) free.
 Bank 25 has 00250 bytes (1.53%) free.
 Bank 26 has 00630 bytes (3.85%) free.

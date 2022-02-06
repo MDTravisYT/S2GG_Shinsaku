@@ -343,7 +343,9 @@ DATA_B31_A8DD:
 .db $FF, $00
 
 DATA_B31_A8E5:
-.db $06, $1B
+.db $06, $18
+	.dw LABEL_200 + $8A
+.db $06, $19
 	.dw LABEL_200 + $8A
 .db $FF, $00 
 

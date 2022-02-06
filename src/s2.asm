@@ -1301,11 +1301,6 @@ LABEL_FB9:
 	call    ClearScreen
 	ld      a, :Bank24				;page in bank 24
 	call    Engine_SwapFrame2
-	ld      hl, $2000
-	call    VDPWrite
-	ld      hl, Art_Title_Screen	;title screen compressed art
-	xor     a
-	call    LoadTiles				;load the tiles into VRAM
 	ld      a, $08					;page in bank 08
 	call    Engine_SwapFrame2
 	ld      hl, $38CC				;destination
@@ -1345,6 +1340,9 @@ LABEL_FB9:
 	ld      c, $51			;sprite number
 	ld      h, $00
 	call    LABEL_6144		;set up the eye sprite
+	
+	call LevelSelect_LoadFont
+    call ClearWorkingVRAM
 	
 	call    LoadLevelPalette
 	ld      a, $40
@@ -4162,7 +4160,7 @@ LABEL_242F_49:
 	jp   ChangeGameMode
 
 LABEL_2439_50:
-	call _Load_Intro_Level
+;	call _Load_Intro_Level
 
 LABEL_243C:
 	ld		a, 0

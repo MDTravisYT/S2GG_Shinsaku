@@ -4227,10 +4227,10 @@ LABEL_247B:
 	jp   ChangeGameMode
 
 LABEL_24BE_48:
-	ld		a, ($D12C)			;check for level select cheat
-	cp		$0D
-	jr		nz, +
-	xor		a
+;	ld		a, ($D12C)			;check for level select cheat
+;	cp		$0D
+;	jr		nz, +
+;	xor		a
 	ld		($D294), a
 	call	LevelSelectMenu		;run the level select
 	call	PaletteFadeOut

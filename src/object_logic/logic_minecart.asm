@@ -114,7 +114,6 @@ Minecart_State_02_Logic_01:		;$8971
 	ld      hl, DATA_B28_8B0C
 	ld      bc, $001B
 	cpir    
-	jr      z, LABEL_B28_89F7
 	call    LABEL_B28_8ABD
 	bit     1, (ix+$22)
 	jp      nz, LABEL_B28_8AAE
@@ -154,18 +153,9 @@ Minecart_State_03_Logic_01:		;$89B4
 	ld      a, ($D353)
 	ld      hl, DATA_B28_8B0C
 	ld      bc, $001B
-	cpir    
-	jr      z, LABEL_B28_89F7
 	call    LABEL_B28_8ABD
 	bit     1, (ix+$22)
 	jp      nz, LABEL_B28_8AAE
-LABEL_B28_89F7:
-	bit     1, (ix+$22)
-	jr      nz, LABEL_B28_8A51
-	ld      (ix+$02), $04		;set state to $04
-	ld      hl, $0000			;set vertical speed to 0
-	ld      (ix+$18), l
-	ld      (ix+$19), h
 	ret     
 
 Minecart_State_04_Logic_01:		;$8A0B
@@ -193,29 +183,6 @@ Minecart_State_04_Logic_01:		;$8A0B
 	ld      bc, $001A
 	cpir    
 	jp      z, LABEL_B28_895D
-LABEL_B28_8A51:
-	ld      a, SFX_MinecartCrash
-	ld      ($DD04), a
-	res     1, (ix+$22)
-	res     7, (iy+$04)
-	ld      hl, $FC00			;set the vertical speed to
-	ld      (ix+$18), l			;make the minecart bounce up
-	ld      (ix+$19), h
-	ld      (ix+$16), $00		;set the horizontal speed to 0
-	ld      (ix+$17), $00
-	ld      (ix+$02), $05		;set the state to $05
-	push    ix
-	pop     hl
-	ld      de, ($D39E)
-	xor     a					;clear carry flag
-	sbc     hl, de
-	ret     nz					;check to see if player is riding
-	ld      hl, $0000			;the minecart.
-	ld      ($D39E), hl
-	push    ix
-	ld      ix, $D500	;get a pointer to the player object structure...
-	call    VF_Player_PlayHurtAnimation	;... and play the "hurt" anim
-	pop     ix			;restore the minecart's object pointer.
 	ret
 
 Minecart_State_05_Logic_01:		;$8A90

@@ -4466,8 +4466,6 @@ LABEL_2606:
 	ld   a, (GameState)
 	bit  2, a
 	jr   z, +
-	ld   a, Music_TitleCard		;play title card music
-	ld   ($DD04), a
 +:	ei
 	ld   hl, BgPaletteControl	;trigger bg palette fade to colour.
 	ld   (hl), $00
